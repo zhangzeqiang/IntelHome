@@ -1,0 +1,6 @@
+1、线程编译项
+由于pthread库不是Linux系统默认的库，连接时需要使用库libpthread.a,所以在使用pthread_create创建线程时，在编译中要加-lpthread参数:
+gcc -o pthread -lpthread pthread.c
+
+2、错误： expected declaration specifiers or ‘...’ before ‘(’ token
+参数不能使用(void *) arg的形式，括号要去掉

@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/DataTransfer/ServerStream.java=UTF-8
+encoding//src/DataTransfer/StreamControl.java=UTF-8
+encoding//src/Pack/Message.java=UTF-8
+encoding//src/Pack/pack.java=UTF-8
+encoding//src/TypeTools/CMDThread.java=UTF-8
+encoding//src/TypeTools/Type.java=UTF-8
+encoding//src/com/example/TypeTools/doMain.java=UTF-8
+encoding//src/database/DBOperation.java=UTF-8
+encoding//src/database/DBTransfer.java=UTF-8

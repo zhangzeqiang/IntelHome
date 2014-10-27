@@ -1,0 +1,2 @@
+1、关闭socket描述符时，要注意shutdown和close的区别，可以避免一些问题
+

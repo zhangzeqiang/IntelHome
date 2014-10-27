@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".Wifi9" >
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.90" >
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView 
+                android:layout_height="30dp"
+                />
+        </TableRow>
+
+
+             <TableRow >
+       		<TextView 
+           		android:textSize="60pt"/>    
+   			</TableRow>
+           <TableRow>
+       <TextView
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:text="用户名："
+           android:textSize="10pt"
+        />
+       <EditText 
+           android:id="@+id/id_text"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:hint="请填写登录账号"
+           android:selectAllOnFocus="true"/>
+   </TableRow>
+   			<TableRow >
+       			<TextView 
+           			android:textSize="10pt"/>    
+   				</TableRow>
+   			<TableRow >
+       <TextView 
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:text="密码:"
+           android:textSize="10pt"
+           />
+       <EditText 
+           android:id="@+id/pwd_text"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:password="true"/>
+   </TableRow>
+   <TableRow >
+       <Button 
+           android:id="@+id/cancel"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="取消"/>
+       <Button 
+           android:id="@+id/login"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="登录"/>"
+   </TableRow>
+    </TableLayout>
+
+</LinearLayout>

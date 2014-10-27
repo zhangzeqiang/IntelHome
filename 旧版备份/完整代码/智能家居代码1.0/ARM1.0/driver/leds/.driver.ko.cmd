@@ -1,0 +1,1 @@
+cmd_/home/john/driver/6440/driver/leds/driver.ko := arm-linux-ld -EL -r  -T /home/john/linux-3.0.1/scripts/module-common.lds --build-id  -o /home/john/driver/6440/driver/leds/driver.ko /home/john/driver/6440/driver/leds/driver.o /home/john/driver/6440/driver/leds/driver.mod.o

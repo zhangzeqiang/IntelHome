@@ -1,0 +1,18 @@
+注意，driver中的linux leds驱动程序没有加入动态建立节点的代码，所以在使用加载驱动程序后要mknod一下
+insmod driver.ko
+sleep 2
+mknod "/dev/LED0" c 100 0
+
+
+wifi部分启动脚本
+#!/bin/sh
+ifconfig eth0 down
+ifconfig wlan0 up
+iwlist wlan0 scan
+ifconfig wlan0 192.168.1.150
+iwconfig wlan0 essid "haidede"
+iwconfig wlan0 key "5432154321"
+route add default gw 192.168.1.1
+exit 0
+
+自启动文件为/etc/init.S/rcS

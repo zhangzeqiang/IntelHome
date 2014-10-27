@@ -1,0 +1,20 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+__SOCKWINDOWS__H__	sockWindows.h	2;"	d
+client_run	main.c	/^void client_run(){$/;"	f
+close_socket	main.c	/^void close_socket(){$/;"	f
+errorWindows	sockWindows.h	/^int errorWindows(){$/;"	f
+id	sockWindows.h	/^	int id;$/;"	m	struct:user_info
+init_socket	main.c	/^void init_socket(unsigned short port, char const *IP){$/;"	f
+loadWindows	sockWindows.h	/^int loadWindows(struct user_info *info){$/;"	f
+main	main.c	/^int main(int argc, char **argv){$/;"	f
+mainWindows	sockWindows.h	/^int mainWindows(struct user_info* info){$/;"	f
+passwd	sockWindows.h	/^	int passwd;$/;"	m	struct:user_info
+registerWindows	sockWindows.h	/^int registerWindows(){$/;"	f
+servaddr	main.c	/^struct sockaddr_in servaddr;$/;"	v	typeref:struct:sockaddr_in
+sockfd	main.c	/^int sockfd;$/;"	v
+user_info	sockWindows.h	/^struct user_info{$/;"	s

@@ -1,0 +1,166 @@
+#ifndef __MODULE433_H__
+#define __MODULE433_H__
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<fcntl.h>
+#include<unistd.h>
+#include<termios.h>
+#include<string.h>
+#include"../include/protocol.h"
+#include"../include/myType.h"
+
+#define close_433(fd) close(fd)
+
+static int set_opt(int fd,int nSpeed, int nBits, char nEvent, int nStop);
+int open_433(const char *file);
+int write_433(int fd, const struct info_node *node);
+int read_433(int fd, struct info_node *dev_node);
+//void close_433(int fd);
+int ioctl_433(int fd, const struct dev_node *dev, size_t size);
+int readInfo_433(int fd, struct dev_node *dev, size_t size);
+
+static int set_opt(int fd,int nSpeed, int nBits, char nEvent, int nStop)
+{
+	struct termios newtio,oldtio;
+	if  ( tcgetattr( fd,&oldtio)  !=  0) { 
+		perror("SetupSerial 1");
+		return -1;
+	}
+	bzero( &newtio, sizeof( newtio ) );
+	newtio.c_cflag  |=  CLOCAL | CREAD;
+	newtio.c_cflag &= ~CSIZE;
+
+	switch( nBits )
+	{
+	case 7:
+		newtio.c_cflag |= CS7;
+		break;
+	case 8:
+		newtio.c_cflag |= CS8;
+		break;
+	}
+
+	switch( nEvent )
+	{
+	case 'O':
+		newtio.c_cflag |= PARENB;
+		newtio.c_cflag |= PARODD;
+		newtio.c_iflag |= (INPCK | ISTRIP);
+		break;
+	case 'E': 
+		newtio.c_iflag |= (INPCK | ISTRIP);
+		newtio.c_cflag |= PARENB;
+		newtio.c_cflag &= ~PARODD;
+		break;
+	case 'N':  
+		newtio.c_cflag &= ~PARENB;
+		break;
+	}
+
+	switch( nSpeed )
+	{
+	case 2400:
+		cfsetispeed(&newtio, B2400);
+		cfsetospeed(&newtio, B2400);
+		break;
+	case 4800:
+		cfsetispeed(&newtio, B4800);
+		cfsetospeed(&newtio, B4800);
+		break;
+	case 9600:
+		cfsetispeed(&newtio, B9600);
+		cfsetospeed(&newtio, B9600);
+		break;
+	case 115200:
+		cfsetispeed(&newtio, B115200);
+		cfsetospeed(&newtio, B115200);
+		break;
+	case 460800:
+		cfsetispeed(&newtio, B460800);
+		cfsetospeed(&newtio, B460800);
+		break;
+	default:
+		cfsetispeed(&newtio, B9600);
+		cfsetospeed(&newtio, B9600);
+		break;
+	}
+	if( nStop == 1 )
+		newtio.c_cflag &=  ~CSTOPB;
+	else if ( nStop == 2 )
+	newtio.c_cflag |=  CSTOPB;
+	newtio.c_cc[VTIME]  = 0;
+	newtio.c_cc[VMIN] = 0;
+	tcflush(fd,TCIFLUSH);
+	if((tcsetattr(fd,TCSANOW,&newtio))!=0)
+	{
+		perror("com set error");
+		return -1;
+	}
+//	printf("set done!\n\r");
+	return 0;
+}
+
+int open_433(const char *file){
+	int fd, nset;
+	fd = open(file, O_RDWR);
+	if (fd == -1){
+		return fd;
+	}
+	nset = set_opt(fd, 9600, 8, 'N', 1);
+	if (nset == -1)
+		return -2;
+	return fd;
+}
+
+int write_433(int fd, const struct info_node *node){
+	TYPE8 i[3];
+	nti(node, i);
+	return write(fd, i, 3);
+}
+int ioctl_433(int fd, const struct dev_node *dev, size_t size){
+	struct info_node *node = malloc(sizeof(struct info_node));
+	if(size < 1){
+		return -1;		
+	}
+	node->dev_from = LOCAL;
+	node->dev_to = dev->devno;
+	node->dev_state = dev->state;
+	write_433(fd, node);
+	free(node);
+	//printf("ioctl_433\n");
+	return 1;
+}
+int readInfo_433(int fd, struct dev_node *dev, size_t size){
+	int result = 0;
+	struct info_node *node = malloc(sizeof(struct info_node));
+	if ((result = read_433(fd, node)) < 0)
+		goto out;
+	/*if (node->dev_to != LOCAL){
+		result = 0;
+		goto out;
+	}*/
+	dev->devno = node->dev_from;
+	dev->state = node->dev_state;
+out:
+	free(node);
+	//printf("read_433\n");
+	return result;
+}
+int read_433(int fd, struct info_node *node){
+	TYPE8 i[3];	
+	int result;
+	if ((result = read(fd, i, 3)) < 0){
+		return result;
+	}
+	itn(i, node);
+	return result;
+}
+/*void close_433(int fd){
+	close(fd);
+}*/
+
+#endif

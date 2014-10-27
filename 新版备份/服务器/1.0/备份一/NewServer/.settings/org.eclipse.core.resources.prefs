@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/database/Database.java=UTF-8
+encoding//src/database/MysqlDB.java=UTF-8
+encoding//src/database/NetBridgeDatabase.java=UTF-8
+encoding//src/main/DoMain.java=UTF-8
+encoding//src/net/NetTransmit.java=UTF-8
+encoding//src/net/Security.java=UTF-8
+encoding//src/net/SocketDatabaseAdaptTransmit.java=UTF-8
+encoding//src/net/Transmit.java=UTF-8

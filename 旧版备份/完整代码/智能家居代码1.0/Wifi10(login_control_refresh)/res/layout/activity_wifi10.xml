@@ -1,0 +1,179 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".Wifi10" >
+<TableRow 
+    android:id="@+id/tableRow1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:text="用户名">
+    </TextView>
+    <TextView
+        android:id="@+id/online_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:text="不在线">
+    </TextView>
+    
+</TableRow>
+	
+<!-- 空格行 -->
+<TableRow    
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt">
+    </TextView>
+</TableRow>
+
+<TableRow 
+        android:id="@+id/tableRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+        android:id="@+id/obj1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:text="LED灯">
+        </TextView>
+	<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right">
+        <Switch
+    		android:id="@+id/switch1"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content" 
+    		android:checked="false"
+    		android:textOn="开"
+    		android:textOff="关"/>
+	</LinearLayout>
+
+</TableRow>
+
+<!-- 空格行 -->
+<TableRow 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt">
+    </TextView>
+</TableRow>
+
+<TableRow 
+        android:id="@+id/tableRow3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+        android:id="@+id/obj2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:text="空调">
+        </TextView>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+        <Switch
+    		android:id="@+id/switch2"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_alignParentRight="true"
+    		android:layout_centerVertical="true"
+    		android:checked="false" 
+    		android:textOn="开"
+    		android:textOff="关"/>
+	</RelativeLayout>
+</TableRow>
+<!-- 空格行 -->
+<TableRow 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt">
+    </TextView>
+</TableRow>
+
+<!-- 空格行 -->
+<TableRow 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt">
+        </TextView>
+</TableRow>
+
+<TableRow    
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+       <EditText 
+           android:id="@+id/con_device_text"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:hint="请填写设备号"
+           android:selectAllOnFocus="true"/>
+       <EditText 
+           android:id="@+id/con_state_text"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:hint="请填写状态"
+           android:selectAllOnFocus="true"/>
+</TableRow>
+<TableRow    
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/send_bn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:text="  发送指令  ">
+    </Button>
+</TableRow>
+<!-- 空格行 -->
+<TableRow 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt">
+        </TextView>
+</TableRow>
+<TableRow 
+        android:id="@+id/tableRow_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+        android:id="@+id/rec_state_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:text="返回状态">
+        </TextView>
+</TableRow>
+</TableLayout>
+
+
+
